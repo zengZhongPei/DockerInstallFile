@@ -7,8 +7,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: mongo123
-    #volumes:
-     # - ./MongoDB/data/db1:/data/db
+    volumes:
+    # 使用docker volume create mongodbdata 先创建一个资料卷
+      - /mongodbdata:/data/db
     ports:
       - 27016:27017
     networks:
@@ -23,7 +24,8 @@ services:
       - MYSQL_USER=test
       - MYSQL_PASSWORD=test123
     volumes:
-      #- ./MySQL/data:/var/lib/mysql
+      # 使用docker volume create mysqlData 先创建一个资料卷
+      - /mysqlData:/var/lib/mysql  
       - ./MySQL/conf/my.cnf:/etc/my.cnf
       - ./MySQL/init:/docker-entrypoint-initdb.d/
     ports:
