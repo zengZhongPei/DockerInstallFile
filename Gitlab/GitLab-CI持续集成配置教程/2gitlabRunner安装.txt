@@ -1,0 +1,31 @@
+1.安装文档地址：https://docs.gitlab.com/runner/install/windows.html
+
+
+2.在系统中的某个位置创建一个文件夹，例如：C:\GitLab-Runner
+	后续runner会自动把代码拷贝一份到这个文件夹中来执行操作
+
+3. 在window上面使用管理员的cmd窗口
+
+4. cd 到第一步创建的文件夹下面
+
+5、下载 gitlab-runner.exe 文件
+
+6.  使用命令来注册runner:   ./gitlab-runner.exe register
+	6.1、注意文件路径:gitlab-runner.exe
+	6.2、注册的详细文档:https://docs.gitlab.com/runner/register/index.html
+	6.3、gitlab的项目地址和token 可以在gitlab代码库中的 “settings-CI/CD-Set up a specific Runner manually”中找到
+	6.4、Please enter the executor： 使用shell 就可以了
+
+7、注册完成后记得运行命令  ./gitlab-runner.exe install 
+
+8、然后在启动  ./gitlab-runner.exe start 启动runner
+
+7. 至此gitlab-runner就创建完成。就可以在项目根目录创建.gitlab-ci.yml 文件来进行自动化运行
+	.gitlab-ci.yml 写入文档教程： https://docs.gitlab.com/ce/ci/yaml/
+
+
+
+
+
+
+

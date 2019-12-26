@@ -1,0 +1,23 @@
+# https://docs.docker.com/compose/compose-file/#build 文档地址
+version: '3'
+services:
+  gitlab: #文档地址:https://docs.gitlab.com/omnibus/settings/README.html
+    image: gitlab/gitlab-ce:latest
+    #restart: always
+    hostname: 'localhost'
+    container_name: gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.example.com:8929'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+        # Add any other gitlab.rb configuration here, each on its own line
+    ports:
+      - '8929:8929'
+      #- '80:80'
+      - '443:443'
+      - '2224:22'
+    volumes:
+      - '/srv_gitlab_config:/etc/gitlab'
+      - '/srv_gitlab_logs:/var/log/gitlab'
+      - '/srv_gitlab_data:/var/opt/gitlab'
+    
